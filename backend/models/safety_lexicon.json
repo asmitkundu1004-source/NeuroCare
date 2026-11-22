@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "notes": "Shared by the Python server and the browser runtime. Keep patterns compatible with both Python re and JavaScript RegExp (no lookbehind). Text is lower-cased and curly quotes are normalised before matching. v2 adds patterns organised by the C-SSRS ideation categories (wish to be dead, method, intent with immediacy, passive ideation) and more idiom exclusions.",
   "exclusions": [
     "\\b(kill|killing) myself (laughing|with laughter)\\b",
@@ -37,7 +37,12 @@
     "\\bwant(ed)? to (stop living|stop existing|not exist|sleep forever)\\b",
     "\\b(sleep|go to sleep) and never wake up\\b",
     "\\b(end|ending) (it|things|everything) (tonight|today|now|this week|this weekend|soon)\\b",
-    "\\b(don't|do not|can't|cannot) see myself (alive|living|being here|surviving)\\b"
+    "\\b(don't|do not|can't|cannot) see myself (alive|living|being here|surviving)\\b",
+    "\\bfeel(ing|s)? like (dying|i want to die|i should die|i'm dying inside|ending it)\\b",
+    "\\bwish(ing)? i (could|would|was|were) (die|dead)\\b",
+    "\\b(i'd|i would|id) rather (die|be dead)\\b",
+    "\\bwant(ing)? to be dead\\b",
+    "\\blife (isn't|is not|isnt) worth living\\b"
   ],
   "distress": [
     "\\bhopeless(ness)?\\b",
