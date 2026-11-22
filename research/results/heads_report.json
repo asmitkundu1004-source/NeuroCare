@@ -1,0 +1,291 @@
+{
+  "emotion": {
+    "dataset": "GoEmotions simplified",
+    "n": {
+      "train": 43410,
+      "val": 5426,
+      "test": 5427
+    },
+    "models": {
+      "tfidf_lr": {
+        "macro_f1": 0.4426,
+        "micro_f1": 0.5346,
+        "weighted_f1": 0.5376,
+        "ekman_macro_f1": 0.5641,
+        "ekman_micro_f1": 0.624,
+        "train_seconds": 14.8987,
+        "per_label_f1": {
+          "admiration": 0.6326,
+          "amusement": 0.7935,
+          "anger": 0.4233,
+          "annoyance": 0.2961,
+          "approval": 0.3013,
+          "caring": 0.2667,
+          "confusion": 0.3522,
+          "curiosity": 0.3875,
+          "desire": 0.3944,
+          "disappointment": 0.245,
+          "disapproval": 0.3094,
+          "disgust": 0.4928,
+          "embarrassment": 0.3143,
+          "excitement": 0.3846,
+          "fear": 0.649,
+          "gratitude": 0.9088,
+          "grief": 0.0,
+          "joy": 0.5595,
+          "love": 0.7719,
+          "nervousness": 0.2424,
+          "optimism": 0.5587,
+          "pride": 0.4615,
+          "realization": 0.2936,
+          "relief": 0.1333,
+          "remorse": 0.625,
+          "sadness": 0.4984,
+          "surprise": 0.4586,
+          "neutral": 0.6397
+        }
+      },
+      "minilm_lr": {
+        "macro_f1": 0.383,
+        "micro_f1": 0.4829,
+        "weighted_f1": 0.478,
+        "ekman_macro_f1": 0.5059,
+        "ekman_micro_f1": 0.5978,
+        "train_seconds": 5.3175,
+        "per_label_f1": {
+          "admiration": 0.5351,
+          "amusement": 0.7352,
+          "anger": 0.3728,
+          "annoyance": 0.2882,
+          "approval": 0.272,
+          "caring": 0.2857,
+          "confusion": 0.2801,
+          "curiosity": 0.3583,
+          "desire": 0.1913,
+          "disappointment": 0.1719,
+          "disapproval": 0.3004,
+          "disgust": 0.4018,
+          "embarrassment": 0.339,
+          "excitement": 0.2618,
+          "fear": 0.4918,
+          "gratitude": 0.7773,
+          "grief": 0.3333,
+          "joy": 0.3989,
+          "love": 0.628,
+          "nervousness": 0.2333,
+          "optimism": 0.4414,
+          "pride": 0.4615,
+          "realization": 0.1606,
+          "relief": 0.08,
+          "remorse": 0.5441,
+          "sadness": 0.4639,
+          "surprise": 0.2921,
+          "neutral": 0.624
+        }
+      },
+      "minilm_mlp": {
+        "macro_f1": 0.3955,
+        "micro_f1": 0.4926,
+        "weighted_f1": 0.4964,
+        "ekman_macro_f1": 0.5204,
+        "ekman_micro_f1": 0.6131,
+        "train_seconds": 8.9202,
+        "per_label_f1": {
+          "admiration": 0.5753,
+          "amusement": 0.7297,
+          "anger": 0.3511,
+          "annoyance": 0.2901,
+          "approval": 0.3054,
+          "caring": 0.324,
+          "confusion": 0.2865,
+          "curiosity": 0.381,
+          "desire": 0.314,
+          "disappointment": 0.1584,
+          "disapproval": 0.3105,
+          "disgust": 0.4234,
+          "embarrassment": 0.2154,
+          "excitement": 0.3043,
+          "fear": 0.4972,
+          "gratitude": 0.7915,
+          "grief": 0.2857,
+          "joy": 0.4526,
+          "love": 0.6667,
+          "nervousness": 0.2979,
+          "optimism": 0.4535,
+          "pride": 0.4286,
+          "realization": 0.1847,
+          "relief": 0.1091,
+          "remorse": 0.5315,
+          "sadness": 0.4458,
+          "surprise": 0.3168,
+          "neutral": 0.643
+        }
+      }
+    },
+    "ekman_confusion_top1": [
+      [
+        402,
+        8,
+        9,
+        92,
+        30,
+        30,
+        155
+      ],
+      [
+        44,
+        18,
+        1,
+        11,
+        2,
+        3,
+        17
+      ],
+      [
+        8,
+        4,
+        47,
+        13,
+        6,
+        3,
+        14
+      ],
+      [
+        149,
+        5,
+        10,
+        1561,
+        30,
+        61,
+        238
+      ],
+      [
+        69,
+        2,
+        8,
+        57,
+        106,
+        16,
+        59
+      ],
+      [
+        64,
+        0,
+        8,
+        100,
+        37,
+        194,
+        130
+      ],
+      [
+        284,
+        5,
+        16,
+        317,
+        54,
+        147,
+        783
+      ]
+    ]
+  },
+  "risk": {
+    "dataset": "Komati (2021) SuicideWatch/depression vs r/teenagers, stratified subsample",
+    "n": {
+      "train": 30000,
+      "val": 5000,
+      "test": 10000
+    },
+    "models": {
+      "tfidf_lr": {
+        "auroc": 0.9799,
+        "auprc": 0.9804,
+        "f1@0.5": 0.9341,
+        "precision@0.5": 0.9403,
+        "recall@0.5": 0.928,
+        "threshold_r95": 0.3528,
+        "recall@r95": 0.9579,
+        "precision@r95": 0.9096,
+        "train_seconds": 9.9814
+      },
+      "minilm_lr": {
+        "auroc": 0.9823,
+        "auprc": 0.9819,
+        "f1@0.5": 0.9375,
+        "precision@0.5": 0.9385,
+        "recall@0.5": 0.9365,
+        "threshold_r95": 0.4121,
+        "recall@r95": 0.9536,
+        "precision@r95": 0.9267,
+        "train_seconds": 0.1909
+      },
+      "minilm_mlp": {
+        "auroc": 0.9848,
+        "auprc": 0.9844,
+        "f1@0.5": 0.9443,
+        "precision@0.5": 0.9376,
+        "recall@0.5": 0.9512,
+        "threshold_r95": 0.4465,
+        "recall@r95": 0.9559,
+        "precision@r95": 0.9317,
+        "train_seconds": 5.942
+      }
+    }
+  },
+  "distortion": {
+    "dataset": "Shreevastava & Foltz (2021)",
+    "n": {
+      "train": 1720,
+      "val": 304,
+      "test": 506
+    },
+    "models": {
+      "detection": {
+        "tfidf_lr": {
+          "f1": 0.8262,
+          "precision": 0.7098,
+          "recall": 0.9884,
+          "auroc": 0.7902,
+          "threshold": 0.275,
+          "all_positive_f1": 0.8094
+        },
+        "minilm_lr": {
+          "f1": 0.8318,
+          "precision": 0.7541,
+          "recall": 0.9273,
+          "auroc": 0.7749,
+          "threshold": 0.25,
+          "all_positive_f1": 0.8094
+        }
+      },
+      "type": {
+        "tfidf_lr": {
+          "macro_f1": 0.1988,
+          "accuracy": 0.2326,
+          "chance_accuracy": 0.1
+        },
+        "minilm_lr": {
+          "macro_f1": 0.1748,
+          "accuracy": 0.189,
+          "chance_accuracy": 0.1
+        }
+      }
+    }
+  },
+  "va": {
+    "dataset": "EmoBank",
+    "n": {
+      "train": 8062,
+      "test": 1000
+    },
+    "models": {
+      "tfidf_ridge": {
+        "pearson_valence": 0.5088,
+        "pearson_arousal": 0.2713
+      },
+      "minilm_ridge": {
+        "pearson_valence": 0.6249,
+        "pearson_arousal": 0.4362
+      }
+    }
+  }
+}

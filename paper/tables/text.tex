@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Text affect: baselines, ablations and Aura-Sense. Held-out test sets: GoEmotions (5,427), EmoBank (1,000), Reddit risk (10,000), Shreevastava--Foltz (506), STS-B (1,379). For circumplex models, valence and arousal are read through the learned circumplex.}
+\label{tab:text}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+\textbf{Model} & \textbf{Encoder passes / turn} & \textbf{Emotion macro-F1} & \textbf{Ekman macro-F1} & \textbf{Valence r} & \textbf{Arousal r} & \textbf{Risk AUROC} & \textbf{Distortion F1} & \textbf{STS-B $\rho$} \\
+\midrule
+TF-IDF + logistic / ridge (per task) & -- & 0.443 & 0.564 & 0.509 & 0.271 & 0.980 & 0.826 & -- \\
+Frozen MiniLM + task heads & 1 & 0.396 & 0.520 & 0.625 & 0.436 & 0.985 & 0.832 & 0.820 \\
+MiniLM fine-tuned separately per task & one per task & 0.435 & 0.600 & -- & -- & 0.996 & -- & -- \\
+Multi-task fine-tune & 1 & 0.519 & 0.637 & 0.731 & 0.503 & 0.995 & 0.826 & 0.643 \\
++ retrieval-preserving distillation (n=3 seeds) & 1 & 0.490 $\pm$ 0.002 & 0.612 $\pm$ 0.006 & 0.699 $\pm$ 0.005 & 0.484 $\pm$ 0.009 & 0.995 $\pm$ 0.000 & 0.834 $\pm$ 0.004 & 0.831 $\pm$ 0.001 \\
++ circumplex, uncertainty-weighted & 1 & 0.396 & 0.548 & 0.730 & 0.511 & 0.995 & 0.837 & 0.828 \\
+\textbf{Aura-Sense (ours): + circumplex, fixed weight (n=3 seeds)} & \textbf{1} & \textbf{0.492 $\pm$ 0.002} & \textbf{0.617 $\pm$ 0.008} & \textbf{0.689 $\pm$ 0.002} & \textbf{0.382 $\pm$ 0.002} & \textbf{0.995 $\pm$ 0.000} & \textbf{0.836 $\pm$ 0.004} & \textbf{0.830 $\pm$ 0.001} \\
+\bottomrule
+\end{tabular}
+\end{table*}

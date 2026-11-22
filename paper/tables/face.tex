@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Facial affect from blendshapes only (AffectNet, 8 classes). Test n = 5,788, chance accuracy 0.125. Faces detected in 99.6\% of images. No model sees pixels.}
+\label{tab:face}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Macro-F1} \\
+\midrule
+FACS prototype rules (zero-shot) & 0.375 & 0.316 & 0.279 \\
+Logistic regression, 52 coefficients & 0.462 & 0.449 & 0.443 \\
+Gradient boosting, 52 coefficients & 0.512 & 0.498 & 0.495 \\
+MLP, 52 coefficients & 0.506 & 0.488 & 0.487 \\
+MLP + bilateral encoding & 0.507 & 0.483 & 0.487 \\
+MLP + mirror augmentation & 0.508 & 0.490 & 0.489 \\
+MLP + both & 0.507 & 0.483 & 0.487 \\
+\textbf{Aura-Face: 5-member ensemble (deployed)} & \textbf{0.516} & \textbf{0.492} & \textbf{0.494} \\
+\bottomrule
+\end{tabular}
+\end{table}

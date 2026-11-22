@@ -1,0 +1,241 @@
+{
+  "dataset": "AffectNet (8-class subset, HF Mauregato/affectnet_short)",
+  "labels": [
+    "anger",
+    "surprise",
+    "contempt",
+    "happy",
+    "neutral",
+    "fear",
+    "sad",
+    "disgust"
+  ],
+  "n": {
+    "train": 20842,
+    "val": 2316,
+    "test": 5788
+  },
+  "face_detection_rate": {
+    "train": 0.9968,
+    "test": 0.9964
+  },
+  "class_counts_test": [
+    637,
+    808,
+    573,
+    1008,
+    1023,
+    630,
+    617,
+    492
+  ],
+  "models": {
+    "facs_rules_zero_shot": {
+      "accuracy": 0.3747,
+      "balanced_accuracy": 0.3158,
+      "macro_f1": 0.2787,
+      "per_class_f1": {
+        "anger": 0.3333,
+        "surprise": 0.4607,
+        "contempt": 0.0903,
+        "happy": 0.6959,
+        "neutral": 0.3581,
+        "fear": 0.0819,
+        "sad": 0.1455,
+        "disgust": 0.0639
+      }
+    },
+    "logreg_raw52": {
+      "accuracy": 0.4615,
+      "balanced_accuracy": 0.4487,
+      "macro_f1": 0.4433,
+      "per_class_f1": {
+        "anger": 0.3687,
+        "surprise": 0.488,
+        "contempt": 0.449,
+        "happy": 0.7497,
+        "neutral": 0.3826,
+        "fear": 0.4446,
+        "sad": 0.3105,
+        "disgust": 0.3532
+      }
+    },
+    "gboost_raw52": {
+      "accuracy": 0.5124,
+      "balanced_accuracy": 0.4977,
+      "macro_f1": 0.4952,
+      "per_class_f1": {
+        "anger": 0.4575,
+        "surprise": 0.5117,
+        "contempt": 0.4975,
+        "happy": 0.7829,
+        "neutral": 0.423,
+        "fear": 0.4881,
+        "sad": 0.4058,
+        "disgust": 0.3953
+      }
+    },
+    "mlp_raw52": {
+      "accuracy": 0.5064,
+      "balanced_accuracy": 0.4883,
+      "macro_f1": 0.4875,
+      "per_class_f1": {
+        "anger": 0.4012,
+        "surprise": 0.5394,
+        "contempt": 0.4902,
+        "happy": 0.7746,
+        "neutral": 0.4222,
+        "fear": 0.4672,
+        "sad": 0.3854,
+        "disgust": 0.4198
+      }
+    },
+    "mlp_bilateral": {
+      "accuracy": 0.5074,
+      "balanced_accuracy": 0.483,
+      "macro_f1": 0.4872,
+      "per_class_f1": {
+        "anger": 0.4179,
+        "surprise": 0.5302,
+        "contempt": 0.514,
+        "happy": 0.7671,
+        "neutral": 0.4534,
+        "fear": 0.446,
+        "sad": 0.3805,
+        "disgust": 0.3883
+      }
+    },
+    "mlp_mirror": {
+      "accuracy": 0.5076,
+      "balanced_accuracy": 0.4902,
+      "macro_f1": 0.4891,
+      "per_class_f1": {
+        "anger": 0.4366,
+        "surprise": 0.5051,
+        "contempt": 0.491,
+        "happy": 0.7793,
+        "neutral": 0.4334,
+        "fear": 0.4758,
+        "sad": 0.3697,
+        "disgust": 0.4222
+      }
+    },
+    "aura_face": {
+      "accuracy": 0.5074,
+      "balanced_accuracy": 0.483,
+      "macro_f1": 0.4872,
+      "per_class_f1": {
+        "anger": 0.4179,
+        "surprise": 0.5302,
+        "contempt": 0.514,
+        "happy": 0.7671,
+        "neutral": 0.4534,
+        "fear": 0.446,
+        "sad": 0.3805,
+        "disgust": 0.3883
+      }
+    },
+    "aura_face_ensemble": {
+      "accuracy": 0.5159,
+      "balanced_accuracy": 0.4924,
+      "macro_f1": 0.4944,
+      "per_class_f1": {
+        "anger": 0.4163,
+        "surprise": 0.5235,
+        "contempt": 0.5056,
+        "happy": 0.775,
+        "neutral": 0.4695,
+        "fear": 0.4772,
+        "sad": 0.3679,
+        "disgust": 0.4203
+      }
+    }
+  },
+  "aura_face_confusion": [
+    [
+      260,
+      41,
+      36,
+      19,
+      122,
+      36,
+      53,
+      70
+    ],
+    [
+      31,
+      435,
+      26,
+      35,
+      84,
+      143,
+      29,
+      25
+    ],
+    [
+      26,
+      32,
+      293,
+      60,
+      105,
+      8,
+      27,
+      22
+    ],
+    [
+      2,
+      32,
+      74,
+      789,
+      58,
+      12,
+      12,
+      29
+    ],
+    [
+      103,
+      109,
+      96,
+      30,
+      515,
+      39,
+      88,
+      43
+    ],
+    [
+      27,
+      152,
+      4,
+      26,
+      56,
+      293,
+      54,
+      18
+    ],
+    [
+      85,
+      35,
+      28,
+      30,
+      155,
+      44,
+      206,
+      34
+    ],
+    [
+      78,
+      18,
+      29,
+      39,
+      76,
+      23,
+      34,
+      195
+    ]
+  ],
+  "aura_face_size": {
+    "parameters": 407080,
+    "bytes_fp32": 1628320,
+    "cpu_us_per_frame": 274.4
+  }
+}

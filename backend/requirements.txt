@@ -1,0 +1,10 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.6
+numpy>=1.26,<3
+onnxruntime>=1.18
+tokenizers>=0.19
+httpx>=0.27
+cryptography>=42
+# optional, on-device neural voice:
+# pykokoro

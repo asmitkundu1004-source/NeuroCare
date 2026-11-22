@@ -1,0 +1,57 @@
+{
+  "machine": {
+    "cpu": "Intel Core i5-11400H (6 cores), 16 GB RAM",
+    "python": "3.11.9",
+    "os": "Windows 10"
+  },
+  "n_sentences": 200,
+  "aura_sense": {
+    "weight_only_8bit": {
+      "size_mb": 24.22,
+      "threads_1": {
+        "median_ms": 47.22,
+        "p90_ms": 52.13
+      },
+      "threads_4": {
+        "median_ms": 27.82,
+        "p90_ms": 32.1
+      }
+    },
+    "fp32": {
+      "size_mb": 90.48,
+      "threads_1": {
+        "median_ms": 8.11,
+        "p90_ms": 11.53
+      },
+      "threads_4": {
+        "median_ms": 4.11,
+        "p90_ms": 5.79
+      }
+    }
+  },
+  "mean_tokens": 19.8,
+  "shared_encoder": {
+    "passes_per_turn": 1,
+    "conventional_passes_per_turn": 4,
+    "estimated_conventional_ms": 111.28,
+    "saving_ms": 83.46
+  },
+  "agem": {
+    "100": {
+      "median_ms": 0.12,
+      "p90_ms": 0.14
+    },
+    "1000": {
+      "median_ms": 1.07,
+      "p90_ms": 1.24
+    },
+    "10000": {
+      "median_ms": 10.35,
+      "p90_ms": 46.6
+    }
+  },
+  "aura_face": {
+    "parameters_total": 407080,
+    "cpu_us_per_frame_per_member": 274.4
+  }
+}

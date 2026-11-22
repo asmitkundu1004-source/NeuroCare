@@ -1,0 +1,168 @@
+{
+  "n": {
+    "memories": 20,
+    "painful": 10,
+    "relevant_queries": 40,
+    "unrelated_queries": 15,
+    "tangential_queries": 10,
+    "follow_up_turns": 6
+  },
+  "memory_valence": {
+    "grandmother": -0.319,
+    "breakup": -0.132,
+    "driving": -0.442,
+    "parents": -0.475,
+    "internship": -0.178,
+    "panic": -0.349,
+    "friend": -0.202,
+    "sleep": -0.29,
+    "dog": -0.273,
+    "lonely": -0.258,
+    "guitar": 0.468,
+    "sister": 0.087,
+    "running": 0.106,
+    "offer": 0.17,
+    "exam": -0.015,
+    "kitten": 0.079,
+    "cooking": 0.12,
+    "trip": 0.092,
+    "book": 0.019,
+    "swim": 0.101
+  },
+  "painful_by_model": [
+    "grandmother",
+    "breakup",
+    "driving",
+    "parents",
+    "internship",
+    "panic",
+    "friend",
+    "sleep",
+    "dog",
+    "lonely"
+  ],
+  "params": {
+    "k": 3,
+    "tau": 0.38,
+    "tau_painful": 0.55,
+    "painful_valence": -0.12,
+    "beta_salience": 0.25,
+    "gamma_recency": 0.05,
+    "half_life_days": 21.0,
+    "refractory_turns": 3,
+    "refractory_penalty": 0.6
+  },
+  "methods": {
+    "naive top-1 (original code)": {
+      "recall@3": 1.0,
+      "isr": 0.36,
+      "tangential_target_surfaced": 0.5,
+      "empty_rate_unrelated": 0.0,
+      "mean_injected": 1.0,
+      "redundancy": 0.6667
+    },
+    "top-3, cos >= 0.82 (progress report)": {
+      "recall@3": 0.075,
+      "isr": 0.0,
+      "tangential_target_surfaced": 0.0,
+      "empty_rate_unrelated": 1.0,
+      "mean_injected": 0.0,
+      "redundancy": 0.0
+    },
+    "top-3, cos >= 0.38 (plain RAG)": {
+      "recall@3": 0.95,
+      "isr": 0.28,
+      "tangential_target_surfaced": 0.6,
+      "empty_rate_unrelated": 0.6,
+      "mean_injected": 0.76,
+      "redundancy": 0.6667
+    },
+    "AGEM without affect gate": {
+      "recall@3": 0.95,
+      "isr": 0.28,
+      "tangential_target_surfaced": 0.6,
+      "empty_rate_unrelated": 0.6,
+      "mean_injected": 0.76,
+      "redundancy": 0.0
+    },
+    "AGEM without refractory": {
+      "recall@3": 0.95,
+      "isr": 0.0,
+      "tangential_target_surfaced": 0.0,
+      "empty_rate_unrelated": 0.6,
+      "mean_injected": 0.48,
+      "redundancy": 0.5
+    },
+    "AGEM (full)": {
+      "recall@3": 0.95,
+      "isr": 0.0,
+      "tangential_target_surfaced": 0.0,
+      "empty_rate_unrelated": 0.6,
+      "mean_injected": 0.48,
+      "redundancy": 0.0
+    }
+  },
+  "demo": {
+    "good": {
+      "query": "My cousin got engaged today and I'm so happy for her",
+      "valence": 0.516,
+      "items": [
+        {
+          "text": "My sister is getting married in December",
+          "similarity": 0.525,
+          "admitted": true,
+          "gated": null
+        },
+        {
+          "text": "My girlfriend broke up with me in March and I still think about her every night",
+          "similarity": 0.371,
+          "admitted": false,
+          "gated": "not relevant"
+        },
+        {
+          "text": "My grandmother passed away last month and I still can't believe she's gone",
+          "similarity": 0.369,
+          "admitted": false,
+          "gated": "not relevant"
+        },
+        {
+          "text": "I started learning the guitar and I'm loving it",
+          "similarity": 0.358,
+          "admitted": false,
+          "gated": "not relevant"
+        }
+      ]
+    },
+    "hard": {
+      "query": "I still miss her so much, the breakup hurts tonight",
+      "valence": -0.326,
+      "items": [
+        {
+          "text": "My girlfriend broke up with me in March and I still think about her every night",
+          "similarity": 0.651,
+          "admitted": true,
+          "gated": null
+        },
+        {
+          "text": "My grandmother passed away last month and I still can't believe she's gone",
+          "similarity": 0.506,
+          "admitted": true,
+          "gated": null
+        },
+        {
+          "text": "My best friend stopped talking to me and I don't know why",
+          "similarity": 0.354,
+          "admitted": false,
+          "gated": "not relevant"
+        },
+        {
+          "text": "I feel lonely since I moved to Bangalore for my job",
+          "similarity": 0.35,
+          "admitted": false,
+          "gated": "not relevant"
+        }
+      ]
+    }
+  },
+  "isr_reduction_vs_plain_rag": 1.0
+}

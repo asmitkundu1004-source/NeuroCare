@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Memory policies on a scripted personal history. 20 memories (10 painful), 40 relevant, 15 unrelated and 10 tangential queries, 6 follow-up turns. ISR: share of unrelated or tangential queries where a painful memory was injected (lower is better).}
+\label{tab:agem}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Policy} & \textbf{Recall@3 $\uparrow$} & \textbf{ISR $\downarrow$} & \textbf{Tangential pain $\downarrow$} & \textbf{Silent when unrelated $\uparrow$} & \textbf{Redundancy $\downarrow$} \\
+\midrule
+naive top-1 (original code) & 1.00 & 0.36 & 0.50 & 0.00 & 0.67 \\
+top-3, cos >= 0.82 (progress report) & 0.07 & 0.00 & 0.00 & 1.00 & 0.00 \\
+top-3, cos >= 0.38 (plain RAG) & 0.95 & 0.28 & 0.60 & 0.60 & 0.67 \\
+AGEM without affect gate & 0.95 & 0.28 & 0.60 & 0.60 & 0.00 \\
+AGEM without refractory & 0.95 & 0.00 & 0.00 & 0.60 & 0.50 \\
+\textbf{AGEM (full)} & \textbf{0.95} & \textbf{0.00} & \textbf{0.00} & \textbf{0.60} & \textbf{0.00} \\
+\bottomrule
+\end{tabular}
+\end{table}

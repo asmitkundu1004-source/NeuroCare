@@ -1,0 +1,227 @@
+{
+  "emotion": {
+    "macro_f1": 0.4923,
+    "micro_f1": 0.5832,
+    "ekman_macro_f1": 0.6135,
+    "per_label_f1": {
+      "admiration": 0.6953,
+      "amusement": 0.8199,
+      "anger": 0.4879,
+      "annoyance": 0.3434,
+      "approval": 0.3943,
+      "caring": 0.4056,
+      "confusion": 0.3981,
+      "curiosity": 0.556,
+      "desire": 0.4,
+      "disappointment": 0.2423,
+      "disapproval": 0.3969,
+      "disgust": 0.5079,
+      "embarrassment": 0.4839,
+      "excitement": 0.408,
+      "fear": 0.6087,
+      "gratitude": 0.9217,
+      "grief": 0.2,
+      "joy": 0.6159,
+      "love": 0.8008,
+      "nervousness": 0.25,
+      "optimism": 0.5762,
+      "pride": 0.4615,
+      "realization": 0.2809,
+      "relief": 0.1224,
+      "remorse": 0.6711,
+      "sadness": 0.5269,
+      "surprise": 0.5149,
+      "neutral": 0.695
+    }
+  },
+  "va": {
+    "pearson_valence": 0.6957,
+    "pearson_arousal": 0.474,
+    "circumplex_pearson_valence": NaN,
+    "circumplex_pearson_arousal": NaN
+  },
+  "risk": {
+    "auroc": 0.9951,
+    "auprc": 0.9953,
+    "f1@0.5": 0.9681,
+    "recall@r95": 0.9534,
+    "precision@r95": 0.978
+  },
+  "distortion": {
+    "f1": 0.8344,
+    "auroc": 0.7856,
+    "type_macro_f1": 0.2117,
+    "type_accuracy": 0.2471
+  },
+  "retrieval": {
+    "stsb_spearman": 0.832
+  },
+  "circumplex_vs_nrc": {
+    "n_labels": 28,
+    "pearson_valence": NaN,
+    "pearson_arousal": NaN
+  },
+  "config": "mt_distill",
+  "distill": 1.0,
+  "circ": 0.0,
+  "uncertainty": true,
+  "steps": 8000,
+  "seed": 13,
+  "train_seconds": 950.9,
+  "task_weights": {
+    "emotion": 12.619999885559082,
+    "va": 17.60700035095215,
+    "risk": 15.175000190734863,
+    "distortion": 0.5799999833106995,
+    "circumplex": 1.0
+  },
+  "calibration": {
+    "emotion_thresholds": [
+      0.4749999940395355,
+      0.3499999940395355,
+      0.3499999940395355,
+      0.22499999403953552,
+      0.22499999403953552,
+      0.17499999701976776,
+      0.20000000298023224,
+      0.2750000059604645,
+      0.5249999761581421,
+      0.10000000149011612,
+      0.17499999701976776,
+      0.25,
+      0.30000001192092896,
+      0.20000000298023224,
+      0.15000000596046448,
+      0.625,
+      0.22499999403953552,
+      0.375,
+      0.4749999940395355,
+      0.2750000059604645,
+      0.30000001192092896,
+      0.20000000298023224,
+      0.20000000298023224,
+      0.05000000074505806,
+      0.17499999701976776,
+      0.30000001192092896,
+      0.3499999940395355,
+      0.30000001192092896
+    ],
+    "risk_elevated": 0.8629879355430603,
+    "risk_crisis": 0.999438464641571,
+    "distortion_threshold": 0.2,
+    "circumplex": {
+      "admiration": [
+        0.0,
+        0.0
+      ],
+      "amusement": [
+        0.0,
+        0.0
+      ],
+      "anger": [
+        0.0,
+        0.0
+      ],
+      "annoyance": [
+        0.0,
+        0.0
+      ],
+      "approval": [
+        0.0,
+        0.0
+      ],
+      "caring": [
+        0.0,
+        0.0
+      ],
+      "confusion": [
+        0.0,
+        0.0
+      ],
+      "curiosity": [
+        0.0,
+        0.0
+      ],
+      "desire": [
+        0.0,
+        0.0
+      ],
+      "disappointment": [
+        0.0,
+        0.0
+      ],
+      "disapproval": [
+        0.0,
+        0.0
+      ],
+      "disgust": [
+        0.0,
+        0.0
+      ],
+      "embarrassment": [
+        0.0,
+        0.0
+      ],
+      "excitement": [
+        0.0,
+        0.0
+      ],
+      "fear": [
+        0.0,
+        0.0
+      ],
+      "gratitude": [
+        0.0,
+        0.0
+      ],
+      "grief": [
+        0.0,
+        0.0
+      ],
+      "joy": [
+        0.0,
+        0.0
+      ],
+      "love": [
+        0.0,
+        0.0
+      ],
+      "nervousness": [
+        0.0,
+        0.0
+      ],
+      "optimism": [
+        0.0,
+        0.0
+      ],
+      "pride": [
+        0.0,
+        0.0
+      ],
+      "realization": [
+        0.0,
+        0.0
+      ],
+      "relief": [
+        0.0,
+        0.0
+      ],
+      "remorse": [
+        0.0,
+        0.0
+      ],
+      "sadness": [
+        0.0,
+        0.0
+      ],
+      "surprise": [
+        0.0,
+        0.0
+      ],
+      "neutral": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

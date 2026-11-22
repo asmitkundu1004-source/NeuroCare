@@ -1,0 +1,39 @@
+# --- personal data and secrets: never commit
+backend/data/
+*.db
+*.key
+salt.bin
+.env
+.env.*
+!.env.example
+
+# --- large model weights (download instructions in docs/DEPLOYMENT.md)
+models/aura-llm/*.gguf
+research/checkpoints/
+
+# --- datasets and caches (re-created by the scripts)
+research/data/
+research/cache/
+research/results/log_*.txt
+research/results/*.npy
+
+# --- generated web assets (re-created by `npm run sync`)
+web/public/models/aura-sense/
+web/public/models/face_landmarker.task
+web/public/mediapipe/
+web/src/data/safety_lexicon.json
+web/dist/
+web/node_modules/
+
+# --- environments and tooling
+.venv/
+venv/
+.envs/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/

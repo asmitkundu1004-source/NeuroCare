@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "notes": "Shared by the Python server and the browser runtime. Keep patterns compatible with both Python re and JavaScript RegExp (no lookbehind). Text is lower-cased and curly quotes are normalised before matching. v2 adds patterns organised by the C-SSRS ideation categories (wish to be dead, method, intent with immediacy, passive ideation) and more idiom exclusions.",
+  "exclusions": [
+    "\\b(kill|killing) myself (laughing|with laughter)\\b",
+    "\\bdie (of|from) (laughter|laughing|embarrassment|boredom|cringe|shame)\\b",
+    "\\b(want|wanna|going) to die (of|from) (laughter|laughing|embarrassment|boredom|cringe|shame)\\b",
+    "\\bdying to (see|know|try|meet|go|watch|hear|tell)\\b",
+    "\\bto die for\\b",
+    "\\bsuicide (squad|mission|doors|run)\\b",
+    "\\b(could|would|'d) (kill|die) for\\b",
+    "\\b(i'd|i would|would) kill to\\b",
+    "\\b(dying|died|dead) (of|from) (boredom|laughter|laughing|embarrassment|cringe|shame)\\b"
+  ],
+  "crisis": [
+    "\\b(kill|killing|hurt|hurting|harm|harming|cut|cutting|burn|burning|starve|starving) (myself|my self)\\b",
+    "\\bsuicid(e|al)\\b",
+    "\\b(end|ending|take|taking) (my|my own) life\\b",
+    "\\bend it all\\b",
+    "\\b(want|wanna|going|plan|planning|ready|deserve) to die\\b",
+    "\\bwish (i was|i were|i had been|i'd been) (dead|never born)\\b",
+    "\\b(don't|do not|dont) want to (live|be alive|exist|wake up)\\b",
+    "\\bbetter off (dead|without me)\\b",
+    "\\bnothing (left )?to live for\\b",
+    "\\bno (reason|point) (to|in) (live|living|going on|being alive)\\b",
+    "\\bself[- ]?harm(ing)?\\b",
+    "\\boverdos(e|ing)\\b",
+    "\\b(hang|hanging|drown|drowning|shoot|shooting|poison|poisoning) myself\\b",
+    "\\bjump(ing)? off (a|the|this) (bridge|building|roof|cliff|balcony|terrace)\\b",
+    "\\b(step|jump|walk)(ing)? in front of (a|the) (train|bus|car|truck)\\b",
+    "\\bnot (be|being) (here|around|alive) (anymore|much longer|tomorrow)\\b",
+    "\\b(suicide|goodbye) note\\b",
+    "\\bgoodbye (forever|cruel world)\\b",
+    "\\bnot (going to |gonna )?(be|being) (here|around|alive) (anymore|much longer|for long|tomorrow|next week)\\b",
+    "\\b(took|taken|swallowed|swallowing) (a lot of|too many|all (of )?(my|the)|a (whole )?bottle of|a handful of|loads of) (pills|tablets|meds|medicine|medication)\\b",
+    "\\b(rather|better) (be )?dead\\b",
+    "\\bwant(ed)? to (stop living|stop existing|not exist|sleep forever)\\b",
+    "\\b(sleep|go to sleep) and never wake up\\b",
+    "\\b(end|ending) (it|things|everything) (tonight|today|now|this week|this weekend|soon)\\b",
+    "\\b(don't|do not|can't|cannot) see myself (alive|living|being here|surviving)\\b"
+  ],
+  "distress": [
+    "\\bhopeless(ness)?\\b",
+    "\\bworthless\\b",
+    "\\b(i'm|i am|im|feel like) (such )?a burden\\b",
+    "\\bno ?one (would|will) (care|miss me|notice)\\b",
+    "\\bnothing (matters|will ever change|ever gets better)\\b",
+    "\\bcan'?t (go on|take (it|this) anymore|do this anymore|keep going|cope)\\b",
+    "\\b(empty|dead) inside\\b",
+    "\\bgive up on (everything|life|myself)\\b",
+    "\\b(feel|feeling|i'm|i am) (so )?trapped\\b",
+    "\\bwhat'?s the point (of|in) (anything|living|life|trying)\\b",
+    "\\bdisappear (forever|for good)\\b",
+    "\\b(i'm|i am|im|feel like) (just |such )?a burden\\b",
+    "\\b(no ?one|nobody) (would|will) (even )?(care|miss me|notice|realise|realize)\\b",
+    "\\b(tired|sick) of (existing|living|being alive|life)\\b",
+    "\\b(i'm|i am|im) done with (everything|life|it all)\\b",
+    "\\bno way out\\b",
+    "\\b(life|everything) (feels|is|seems) (so )?(pointless|meaningless)\\b"
+  ],
+  "medical": [
+    "\\b(how much|how many|what dose|what dosage|dosage|dose of|mg of|milligrams of)\\b",
+    "\\b(should|can|could) i (stop|quit|increase|double|skip|reduce|lower) (taking )?(my )?(meds|medication|medicine|pills|tablets|antidepressants|ssri)\\b",
+    "\\b(prescribe|prescription) (me|for me)\\b",
+    "\\bdo i have (depression|bipolar|adhd|ocd|ptsd|bpd|schizophrenia|an? anxiety disorder|autism)\\b",
+    "\\bdiagnos(e|is) me\\b"
+  ],
+  "resources": {
+    "IN": [
+      {
+        "name": "Tele-MANAS, Govt. of India (24x7, free)",
+        "contact": "14416 or 1-800-891-4416"
+      },
+      {
+        "name": "AASRA (24x7)",
+        "contact": "+91 98204 66726"
+      },
+      {
+        "name": "Emergency services",
+        "contact": "112"
+      }
+    ],
+    "US": [
+      {
+        "name": "988 Suicide & Crisis Lifeline",
+        "contact": "Call or text 988"
+      },
+      {
+        "name": "Emergency services",
+        "contact": "911"
+      }
+    ],
+    "UK": [
+      {
+        "name": "Samaritans (24x7, free)",
+        "contact": "116 123"
+      },
+      {
+        "name": "Emergency services",
+        "contact": "999"
+      }
+    ],
+    "INTL": [
+      {
+        "name": "Find a helpline in your country",
+        "contact": "findahelpline.com"
+      }
+    ]
+  }
+}

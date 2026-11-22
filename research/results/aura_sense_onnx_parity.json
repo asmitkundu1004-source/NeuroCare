@@ -1,0 +1,21 @@
+{
+  "fp32": {
+    "embedding_cosine_mean": 1.0,
+    "embedding_cosine_min": 1.0,
+    "emotion_top1_agreement": 1.0,
+    "max_abs_va_diff": 0.0,
+    "max_abs_risk_prob_diff": 0.0,
+    "p95_abs_risk_prob_diff": 0.0,
+    "size_mb": 90.48
+  },
+  "weight_only_8bit": {
+    "embedding_cosine_mean": 0.99956,
+    "embedding_cosine_min": 0.99869,
+    "emotion_top1_agreement": 0.99,
+    "max_abs_va_diff": 0.0137,
+    "max_abs_risk_prob_diff": 0.0837,
+    "p95_abs_risk_prob_diff": 0.0233,
+    "size_mb": 24.22
+  },
+  "protocol": "300 GoEmotions test sentences, one sentence per call (no padding), as both runtimes call the model"
+}

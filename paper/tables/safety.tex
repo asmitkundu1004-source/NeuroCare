@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Safety gate on short conversational messages. Development probe: 20 explicit, 12 indirect, 12 distress, 25 benign. Held-out probe written before lexicon v2: 10 explicit, 8 indirect, 10 idioms. No configuration escalated ordinary distress to a crisis.}
+\label{tab:safety}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{System} & \textbf{Dev crisis recall} & \textbf{Dev alert recall} & \textbf{Dev benign false alert} & \textbf{Held-out crisis recall} & \textbf{Held-out alert recall} & \textbf{Held-out idiom false alert} \\
+\midrule
+lexicon $\cdot$ lexicon v1 & 0.90 & 0.78 & 0.00 & 0.50 & 0.39 & 0.00 \\
+classifier $\cdot$ lexicon v1 & 0.00 & 0.56 & 0.04 & 0.00 & 0.56 & 0.00 \\
+hybrid $\cdot$ lexicon v1 & 0.90 & 0.88 & 0.04 & 0.50 & 0.72 & 0.00 \\
+lexicon $\cdot$ lexicon v2 & 1.00 & 0.94 & 0.00 & 0.90 & 0.94 & 0.00 \\
+classifier $\cdot$ lexicon v2 & 0.00 & 0.56 & 0.04 & 0.00 & 0.56 & 0.00 \\
+\textbf{hybrid $\cdot$ lexicon v2} & \textbf{1.00} & \textbf{1.00} & \textbf{0.04} & \textbf{0.90} & \textbf{1.00} & \textbf{0.00} \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,608 @@
+{
+  "aura_sense": {
+    "emotion_macro_f1": 0.4918,
+    "ekman_macro_f1": 0.6178,
+    "valence_r": 0.7057,
+    "arousal_r": 0.4675,
+    "valence_r_circ": 0.6867,
+    "arousal_r_circ": 0.381,
+    "risk_auroc": 0.9952,
+    "risk_n": 10000,
+    "distortion_f1": 0.8377,
+    "stsb": 0.8311,
+    "stsb_teacher": 0.8203,
+    "circ_nrc_valence_r": 0.8462,
+    "circ_nrc_arousal_r": 0.2351,
+    "size_mb": 24
+  },
+  "aura_face": {
+    "accuracy": 0.5159,
+    "macro_f1": 0.4944,
+    "chance": 0.125
+  },
+  "agem": {
+    "demo": {
+      "good": {
+        "query": "My cousin got engaged today and I'm so happy for her",
+        "valence": 0.516,
+        "items": [
+          {
+            "text": "My sister is getting married in December",
+            "similarity": 0.525,
+            "admitted": true,
+            "gated": null
+          },
+          {
+            "text": "My girlfriend broke up with me in March and I still think about her every night",
+            "similarity": 0.371,
+            "admitted": false,
+            "gated": "not relevant"
+          },
+          {
+            "text": "My grandmother passed away last month and I still can't believe she's gone",
+            "similarity": 0.369,
+            "admitted": false,
+            "gated": "not relevant"
+          },
+          {
+            "text": "I started learning the guitar and I'm loving it",
+            "similarity": 0.358,
+            "admitted": false,
+            "gated": "not relevant"
+          }
+        ]
+      },
+      "hard": {
+        "query": "I still miss her so much, the breakup hurts tonight",
+        "valence": -0.326,
+        "items": [
+          {
+            "text": "My girlfriend broke up with me in March and I still think about her every night",
+            "similarity": 0.651,
+            "admitted": true,
+            "gated": null
+          },
+          {
+            "text": "My grandmother passed away last month and I still can't believe she's gone",
+            "similarity": 0.506,
+            "admitted": true,
+            "gated": null
+          },
+          {
+            "text": "My best friend stopped talking to me and I don't know why",
+            "similarity": 0.354,
+            "admitted": false,
+            "gated": "not relevant"
+          },
+          {
+            "text": "I feel lonely since I moved to Bangalore for my job",
+            "similarity": 0.35,
+            "admitted": false,
+            "gated": "not relevant"
+          }
+        ]
+      }
+    },
+    "isr_reduction": "100%",
+    "isr_plain": 0.28,
+    "isr_agem": 0.0
+  },
+  "samples": [
+    {
+      "text": "I finally finished my project and my team loved it",
+      "top": [
+        [
+          "love",
+          0.963
+        ],
+        [
+          "admiration",
+          0.111
+        ],
+        [
+          "joy",
+          0.078
+        ],
+        [
+          "approval",
+          0.033
+        ]
+      ]
+    },
+    {
+      "text": "I can't stop worrying that I'll fail my exam on Friday",
+      "top": [
+        [
+          "nervousness",
+          0.554
+        ],
+        [
+          "optimism",
+          0.382
+        ],
+        [
+          "caring",
+          0.263
+        ],
+        [
+          "disappointment",
+          0.223
+        ]
+      ]
+    },
+    {
+      "text": "My grandmother passed away last month and I miss her every day",
+      "top": [
+        [
+          "sadness",
+          0.95
+        ],
+        [
+          "grief",
+          0.285
+        ],
+        [
+          "neutral",
+          0.186
+        ],
+        [
+          "disappointment",
+          0.101
+        ]
+      ]
+    },
+    {
+      "text": "I'm so angry they cancelled on me again",
+      "top": [
+        [
+          "anger",
+          0.669
+        ],
+        [
+          "disappointment",
+          0.267
+        ],
+        [
+          "annoyance",
+          0.253
+        ],
+        [
+          "sadness",
+          0.152
+        ]
+      ]
+    },
+    {
+      "text": "Everyone at work must think I'm useless",
+      "top": [
+        [
+          "neutral",
+          0.441
+        ],
+        [
+          "annoyance",
+          0.34
+        ],
+        [
+          "disappointment",
+          0.208
+        ],
+        [
+          "realization",
+          0.051
+        ]
+      ]
+    },
+    {
+      "text": "I'm exhausted, I haven't slept properly in days",
+      "top": [
+        [
+          "neutral",
+          0.324
+        ],
+        [
+          "sadness",
+          0.074
+        ],
+        [
+          "disappointment",
+          0.043
+        ],
+        [
+          "annoyance",
+          0.035
+        ]
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "text": "I finally finished my project and my team loved it",
+      "dominant": "love",
+      "quadrant": "bright",
+      "persona": "empathetic",
+      "persona_name": "The Listener",
+      "reason": "steady state: keep the current stance"
+    },
+    {
+      "text": "I can't stop worrying that I'll fail my exam on Friday",
+      "dominant": "nervousness",
+      "quadrant": "tense",
+      "persona": "zen",
+      "persona_name": "The Anchor",
+      "reason": "nervousness and high arousal: slow things down"
+    },
+    {
+      "text": "My grandmother passed away last month and I miss her every day",
+      "dominant": "sadness",
+      "quadrant": "tense",
+      "persona": "strategist",
+      "persona_name": "The Reframer",
+      "reason": "possible mental filter: look at the thought"
+    },
+    {
+      "text": "I'm so angry they cancelled on me again",
+      "dominant": "anger",
+      "quadrant": "tense",
+      "persona": "zen",
+      "persona_name": "The Anchor",
+      "reason": "anger and high arousal: slow things down"
+    },
+    {
+      "text": "Everyone at work must think I'm useless",
+      "dominant": "annoyance",
+      "quadrant": "low",
+      "persona": "strategist",
+      "persona_name": "The Reframer",
+      "reason": "possible labeling: look at the thought"
+    },
+    {
+      "text": "I'm exhausted, I haven't slept properly in days",
+      "dominant": "sadness",
+      "quadrant": "tense",
+      "persona": "strategist",
+      "persona_name": "The Reframer",
+      "reason": "possible overgeneralization: look at the thought"
+    }
+  ],
+  "tables": [
+    {
+      "id": "text",
+      "title": "Text affect: baselines, ablations and Aura-Sense",
+      "caption": "Held-out test sets: GoEmotions (5,427), EmoBank (1,000), Reddit risk (10,000), Shreevastava–Foltz (506), STS-B (1,379). For circumplex models, valence and arousal are read through the learned circumplex.",
+      "columns": [
+        "Model",
+        "Encoder passes / turn",
+        "Emotion macro-F1",
+        "Ekman macro-F1",
+        "Valence r",
+        "Arousal r",
+        "Risk AUROC",
+        "Distortion F1",
+        "STS-B ρ"
+      ],
+      "rows": [
+        [
+          "TF-IDF + logistic / ridge (per task)",
+          "—",
+          "0.443",
+          "0.564",
+          "0.509",
+          "0.271",
+          "0.980",
+          "0.826",
+          "—"
+        ],
+        [
+          "Frozen MiniLM + task heads",
+          "1",
+          "0.396",
+          "0.520",
+          "0.625",
+          "0.436",
+          "0.985",
+          "0.832",
+          "0.820"
+        ],
+        [
+          "MiniLM fine-tuned separately per task",
+          "one per task",
+          "0.435",
+          "0.600",
+          "—",
+          "—",
+          "0.996",
+          "—",
+          "—"
+        ],
+        [
+          "Multi-task fine-tune",
+          "1",
+          "0.519",
+          "0.637",
+          "0.731",
+          "0.503",
+          "0.995",
+          "0.826",
+          "0.643"
+        ],
+        [
+          "+ retrieval-preserving distillation (n=3 seeds)",
+          "1",
+          "0.490 ± 0.002",
+          "0.612 ± 0.006",
+          "0.699 ± 0.005",
+          "0.484 ± 0.009",
+          "0.995 ± 0.000",
+          "0.834 ± 0.004",
+          "0.831 ± 0.001"
+        ],
+        [
+          "+ circumplex, uncertainty-weighted",
+          "1",
+          "0.396",
+          "0.548",
+          "0.730",
+          "0.511",
+          "0.995",
+          "0.837",
+          "0.828"
+        ],
+        [
+          "Aura-Sense (ours): + circumplex, fixed weight (n=3 seeds)",
+          "1",
+          "0.492 ± 0.002",
+          "0.617 ± 0.008",
+          "0.689 ± 0.002",
+          "0.382 ± 0.002",
+          "0.995 ± 0.000",
+          "0.836 ± 0.004",
+          "0.830 ± 0.001"
+        ]
+      ],
+      "highlight": [
+        6
+      ]
+    },
+    {
+      "id": "face",
+      "title": "Facial affect from blendshapes only (AffectNet, 8 classes)",
+      "caption": "Test n = 5,788, chance accuracy 0.125. Faces detected in 99.6% of images. No model sees pixels.",
+      "columns": [
+        "Model",
+        "Accuracy",
+        "Balanced acc.",
+        "Macro-F1"
+      ],
+      "rows": [
+        [
+          "FACS prototype rules (zero-shot)",
+          "0.375",
+          "0.316",
+          "0.279"
+        ],
+        [
+          "Logistic regression, 52 coefficients",
+          "0.462",
+          "0.449",
+          "0.443"
+        ],
+        [
+          "Gradient boosting, 52 coefficients",
+          "0.512",
+          "0.498",
+          "0.495"
+        ],
+        [
+          "MLP, 52 coefficients",
+          "0.506",
+          "0.488",
+          "0.487"
+        ],
+        [
+          "MLP + bilateral encoding",
+          "0.507",
+          "0.483",
+          "0.487"
+        ],
+        [
+          "MLP + mirror augmentation",
+          "0.508",
+          "0.490",
+          "0.489"
+        ],
+        [
+          "MLP + both",
+          "0.507",
+          "0.483",
+          "0.487"
+        ],
+        [
+          "Aura-Face: 5-member ensemble (deployed)",
+          "0.516",
+          "0.492",
+          "0.494"
+        ]
+      ],
+      "highlight": [
+        7
+      ]
+    },
+    {
+      "id": "agem",
+      "title": "Memory policies on a scripted personal history",
+      "caption": "20 memories (10 painful), 40 relevant, 15 unrelated and 10 tangential queries, 6 follow-up turns. ISR: share of unrelated or tangential queries where a painful memory was injected (lower is better).",
+      "columns": [
+        "Policy",
+        "Recall@3 ↑",
+        "ISR ↓",
+        "Tangential pain ↓",
+        "Silent when unrelated ↑",
+        "Redundancy ↓"
+      ],
+      "rows": [
+        [
+          "naive top-1 (original code)",
+          "1.00",
+          "0.36",
+          "0.50",
+          "0.00",
+          "0.67"
+        ],
+        [
+          "top-3, cos >= 0.82 (progress report)",
+          "0.07",
+          "0.00",
+          "0.00",
+          "1.00",
+          "0.00"
+        ],
+        [
+          "top-3, cos >= 0.38 (plain RAG)",
+          "0.95",
+          "0.28",
+          "0.60",
+          "0.60",
+          "0.67"
+        ],
+        [
+          "AGEM without affect gate",
+          "0.95",
+          "0.28",
+          "0.60",
+          "0.60",
+          "0.00"
+        ],
+        [
+          "AGEM without refractory",
+          "0.95",
+          "0.00",
+          "0.00",
+          "0.60",
+          "0.50"
+        ],
+        [
+          "AGEM (full)",
+          "0.95",
+          "0.00",
+          "0.00",
+          "0.60",
+          "0.00"
+        ]
+      ],
+      "highlight": [
+        5
+      ]
+    },
+    {
+      "id": "safety",
+      "title": "Safety gate on short conversational messages",
+      "caption": "Development probe: 20 explicit, 12 indirect, 12 distress, 25 benign. Held-out probe written before lexicon v2: 10 explicit, 8 indirect, 10 idioms. No configuration escalated ordinary distress to a crisis.",
+      "columns": [
+        "System",
+        "Dev crisis recall",
+        "Dev alert recall",
+        "Dev benign false alert",
+        "Held-out crisis recall",
+        "Held-out alert recall",
+        "Held-out idiom false alert"
+      ],
+      "rows": [
+        [
+          "lexicon · lexicon v1",
+          "0.90",
+          "0.78",
+          "0.00",
+          "0.50",
+          "0.39",
+          "0.00"
+        ],
+        [
+          "classifier · lexicon v1",
+          "0.00",
+          "0.56",
+          "0.04",
+          "0.00",
+          "0.56",
+          "0.00"
+        ],
+        [
+          "hybrid · lexicon v1",
+          "0.90",
+          "0.88",
+          "0.04",
+          "0.50",
+          "0.72",
+          "0.00"
+        ],
+        [
+          "lexicon · lexicon v2",
+          "1.00",
+          "0.94",
+          "0.00",
+          "0.90",
+          "0.94",
+          "0.00"
+        ],
+        [
+          "classifier · lexicon v2",
+          "0.00",
+          "0.56",
+          "0.04",
+          "0.00",
+          "0.56",
+          "0.00"
+        ],
+        [
+          "hybrid · lexicon v2",
+          "1.00",
+          "1.00",
+          "0.04",
+          "0.90",
+          "1.00",
+          "0.00"
+        ]
+      ],
+      "highlight": [
+        5
+      ]
+    },
+    {
+      "id": "runtime",
+      "title": "Export fidelity and CPU latency of Aura-Sense",
+      "caption": "Agreement with the PyTorch model on 300 held-out sentences, one sentence per call. Latency is the median per sentence (19.8 tokens on average) on Intel Core i5-11400H (6 cores), 16 GB RAM.",
+      "columns": [
+        "Graph",
+        "Size (MB)",
+        "Embedding cos",
+        "Emotion top-1 agree",
+        "Max Δ risk",
+        "1 thread (ms)",
+        "4 threads (ms)"
+      ],
+      "rows": [
+        [
+          "fp32",
+          "90.5",
+          "1.0000",
+          "1.000",
+          "0.000",
+          "8.1",
+          "4.1"
+        ],
+        [
+          "8-bit weight-only (deployed)",
+          "24.2",
+          "0.9996",
+          "0.990",
+          "0.084",
+          "47.2",
+          "27.8"
+        ]
+      ],
+      "highlight": [
+        1
+      ]
+    }
+  ]
+}

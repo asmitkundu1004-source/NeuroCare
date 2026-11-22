@@ -1,0 +1,15 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Export fidelity and CPU latency of Aura-Sense. Agreement with the PyTorch model on 300 held-out sentences, one sentence per call. Latency is the median per sentence (19.8 tokens on average) on Intel Core i5-11400H (6 cores), 16 GB RAM.}
+\label{tab:runtime}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Graph} & \textbf{Size (MB)} & \textbf{Embedding cos} & \textbf{Emotion top-1 agree} & \textbf{Max $\Delta$ risk} & \textbf{1 thread (ms)} & \textbf{4 threads (ms)} \\
+\midrule
+fp32 & 90.5 & 1.0000 & 1.000 & 0.000 & 8.1 & 4.1 \\
+\textbf{8-bit weight-only (deployed)} & \textbf{24.2} & \textbf{0.9996} & \textbf{0.990} & \textbf{0.084} & \textbf{47.2} & \textbf{27.8} \\
+\bottomrule
+\end{tabular}
+\end{table*}

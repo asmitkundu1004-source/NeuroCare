@@ -1,0 +1,62 @@
+{
+  "n": {
+    "explicit": 20,
+    "indirect": 12,
+    "distress": 12,
+    "idiom": 15,
+    "everyday": 10
+  },
+  "thresholds": {
+    "threshold_elevated": 0.8963,
+    "threshold_crisis": 0.9996
+  },
+  "systems": {
+    "lexicon": {
+      "explicit_crisis_recall": 0.9,
+      "explicit_any_alert": 0.9,
+      "indirect_alert_recall": 0.6667,
+      "risk_alert_recall": 0.8125,
+      "distress_over_escalation": 0.0,
+      "distress_alert_rate": 0.0,
+      "benign_false_crisis": 0.0,
+      "benign_false_alert": 0.0,
+      "idiom_false_alert": 0.0
+    },
+    "classifier": {
+      "explicit_crisis_recall": 0.05,
+      "explicit_any_alert": 0.5,
+      "indirect_alert_recall": 0.5833,
+      "risk_alert_recall": 0.5312,
+      "distress_over_escalation": 0.0,
+      "distress_alert_rate": 0.0,
+      "benign_false_crisis": 0.0,
+      "benign_false_alert": 0.04,
+      "idiom_false_alert": 0.0667
+    },
+    "hybrid": {
+      "explicit_crisis_recall": 0.9,
+      "explicit_any_alert": 0.9,
+      "indirect_alert_recall": 0.8333,
+      "risk_alert_recall": 0.875,
+      "distress_over_escalation": 0.0,
+      "distress_alert_rate": 0.0,
+      "benign_false_crisis": 0.0,
+      "benign_false_alert": 0.04,
+      "idiom_false_alert": 0.0667
+    }
+  },
+  "misses": {
+    "explicit_not_tier2": [
+      "I took a lot of pills tonight",
+      "I'm not going to be around much longer"
+    ],
+    "indirect_tier0": [
+      "I'm so tired of existing",
+      "nobody would even notice if I disappeared"
+    ],
+    "benign_alerts": [
+      "I could kill for a plate of biryani right now"
+    ],
+    "distress_tier2": []
+  }
+}

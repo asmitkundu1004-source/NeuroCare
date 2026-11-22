@@ -1,0 +1,11 @@
+{
+  "name": "neurocare-report",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build_report.mjs"
+  },
+  "dependencies": {
+    "docx": "^9.16.0"
+  }
+}

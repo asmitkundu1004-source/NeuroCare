@@ -1,0 +1,290 @@
+{
+  "name": "Aura-Sense",
+  "version": "1.0.0",
+  "base": "sentence-transformers/all-MiniLM-L6-v2",
+  "dim": 384,
+  "max_length": 128,
+  "outputs": [
+    "embedding",
+    "emotion_logits",
+    "va",
+    "risk_logits",
+    "distortion_logits",
+    "distortion_type_logits"
+  ],
+  "quantisation": "int8 embeddings + 8-bit block-32 weight-only MatMul, fp32 activations",
+  "emotion": {
+    "labels": [
+      "admiration",
+      "amusement",
+      "anger",
+      "annoyance",
+      "approval",
+      "caring",
+      "confusion",
+      "curiosity",
+      "desire",
+      "disappointment",
+      "disapproval",
+      "disgust",
+      "embarrassment",
+      "excitement",
+      "fear",
+      "gratitude",
+      "grief",
+      "joy",
+      "love",
+      "nervousness",
+      "optimism",
+      "pride",
+      "realization",
+      "relief",
+      "remorse",
+      "sadness",
+      "surprise",
+      "neutral"
+    ],
+    "thresholds": [
+      0.4749999940395355,
+      0.32499998807907104,
+      0.22499999403953552,
+      0.25,
+      0.22499999403953552,
+      0.25,
+      0.20000000298023224,
+      0.25,
+      0.5249999761581421,
+      0.17499999701976776,
+      0.17499999701976776,
+      0.25,
+      0.4000000059604645,
+      0.22499999403953552,
+      0.15000000596046448,
+      0.6499999761581421,
+      0.17499999701976776,
+      0.42500001192092896,
+      0.5,
+      0.25,
+      0.32499998807907104,
+      0.20000000298023224,
+      0.17499999701976776,
+      0.05000000074505806,
+      0.25,
+      0.2750000059604645,
+      0.3499999940395355,
+      0.32499998807907104
+    ],
+    "ekman": {
+      "anger": [
+        "anger",
+        "annoyance",
+        "disapproval"
+      ],
+      "disgust": [
+        "disgust"
+      ],
+      "fear": [
+        "fear",
+        "nervousness"
+      ],
+      "joy": [
+        "joy",
+        "amusement",
+        "approval",
+        "excitement",
+        "gratitude",
+        "love",
+        "optimism",
+        "relief",
+        "pride",
+        "admiration",
+        "desire",
+        "caring"
+      ],
+      "sadness": [
+        "sadness",
+        "disappointment",
+        "embarrassment",
+        "grief",
+        "remorse"
+      ],
+      "surprise": [
+        "surprise",
+        "realization",
+        "confusion",
+        "curiosity"
+      ],
+      "neutral": [
+        "neutral"
+      ]
+    }
+  },
+  "circumplex": {
+    "admiration": [
+      0.3844,
+      0.1876
+    ],
+    "amusement": [
+      0.1702,
+      -0.0385
+    ],
+    "anger": [
+      -0.7002,
+      0.4869
+    ],
+    "annoyance": [
+      -0.5694,
+      0.2568
+    ],
+    "approval": [
+      0.2146,
+      -0.018
+    ],
+    "caring": [
+      0.1192,
+      0.0862
+    ],
+    "confusion": [
+      -0.0077,
+      -0.3152
+    ],
+    "curiosity": [
+      -0.0871,
+      0.0368
+    ],
+    "desire": [
+      0.1879,
+      -0.1863
+    ],
+    "disappointment": [
+      -0.47,
+      -0.0491
+    ],
+    "disapproval": [
+      -0.2602,
+      -0.0432
+    ],
+    "disgust": [
+      -0.4634,
+      0.021
+    ],
+    "embarrassment": [
+      -0.1111,
+      -0.0044
+    ],
+    "excitement": [
+      0.5602,
+      0.385
+    ],
+    "fear": [
+      -0.5077,
+      0.31
+    ],
+    "gratitude": [
+      0.3393,
+      0.0104
+    ],
+    "grief": [
+      -0.1326,
+      -0.3524
+    ],
+    "joy": [
+      0.5978,
+      0.2688
+    ],
+    "love": [
+      0.5005,
+      0.2815
+    ],
+    "nervousness": [
+      -0.2063,
+      -0.1949
+    ],
+    "optimism": [
+      0.1329,
+      0.0739
+    ],
+    "pride": [
+      0.3368,
+      -0.4064
+    ],
+    "realization": [
+      -0.0495,
+      -0.1829
+    ],
+    "relief": [
+      0.0749,
+      -0.3848
+    ],
+    "remorse": [
+      -0.224,
+      -0.2413
+    ],
+    "sadness": [
+      -0.7099,
+      0.2258
+    ],
+    "surprise": [
+      -0.0795,
+      0.2711
+    ],
+    "neutral": [
+      -0.02,
+      -0.0149
+    ]
+  },
+  "risk": {
+    "threshold_elevated": 0.8492,
+    "threshold_crisis": 0.9995
+  },
+  "distortion": {
+    "threshold": 0.225,
+    "types": [
+      "All-or-nothing thinking",
+      "Emotional Reasoning",
+      "Fortune-telling",
+      "Labeling",
+      "Magnification",
+      "Mental filter",
+      "Mind Reading",
+      "Overgeneralization",
+      "Personalization",
+      "Should statements"
+    ]
+  },
+  "va_scale": "EmoBank (x - 3) / 2",
+  "metrics": {
+    "va": {
+      "pearson_valence": 0.7057,
+      "pearson_arousal": 0.4675,
+      "circumplex_pearson_valence": 0.6867,
+      "circumplex_pearson_arousal": 0.381
+    },
+    "risk": {
+      "auroc": 0.9952,
+      "auprc": 0.9953,
+      "f1@0.5": 0.9685,
+      "recall@r95": 0.9548,
+      "precision@r95": 0.978
+    },
+    "distortion": {
+      "f1": 0.8377,
+      "auroc": 0.7866,
+      "type_macro_f1": 0.2156,
+      "type_accuracy": 0.25
+    },
+    "retrieval": {
+      "stsb_spearman": 0.8311
+    },
+    "circumplex_vs_nrc": {
+      "n_labels": 28,
+      "pearson_valence": 0.8462,
+      "pearson_arousal": 0.2351
+    },
+    "emotion": {
+      "macro_f1": 0.4918,
+      "micro_f1": 0.586,
+      "ekman_macro_f1": 0.6178
+    }
+  }
+}
