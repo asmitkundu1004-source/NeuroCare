@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Lenis from 'lenis'
-import { createContext, lazy, Suspense, useContext, useEffect, useState } from 'react'
+import { Component, createContext, lazy, Suspense, useContext, useEffect, useState } from 'react'
 import { BrowserRouter, HashRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { EASE, Icon, Sheet } from './components/ui.jsx'
 import { NAV, site } from './content/site.js'
@@ -8,11 +8,44 @@ import { REGIONS, resourcesFor } from './engine/core.js'
 import { EngineProvider, useEngine } from './engine/EngineProvider.jsx'
 import Landing from './pages/Landing.jsx'
 
-const Session = lazy(() => import('./pages/Session.jsx'))
-const Insights = lazy(() => import('./pages/Insights.jsx'))
-const Breathe = lazy(() => import('./pages/Breathe.jsx'))
-const Lab = lazy(() => import('./pages/Lab.jsx'))
-const Privacy = lazy(() => import('./pages/Privacy.jsx'))
+// After a redeploy, an open tab still asks for the previous build's file names and the
+// import fails. Reload once to pick up the new build instead of hanging on a blank page.
+function lazyPage(load) {
+  return lazy(() => load().then((m) => { sessionStorage.removeItem('nc.reloaded'); return m }).catch((err) => {
+    if (!sessionStorage.getItem('nc.reloaded')) {
+      sessionStorage.setItem('nc.reloaded', '1')
+      window.location.reload()
+      return new Promise(() => {})
+    }
+    throw err
+  }))
+}
+
+const Session = lazyPage(() => import('./pages/Session.jsx'))
+const Insights = lazyPage(() => import('./pages/Insights.jsx'))
+const Breathe = lazyPage(() => import('./pages/Breathe.jsx'))
+const Lab = lazyPage(() => import('./pages/Lab.jsx'))
+const Privacy = lazyPage(() => import('./pages/Privacy.jsx'))
+
+class PageBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { failed: false }
+  }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() {
+    if (!this.state.failed) return this.props.children
+    return (
+      <section className="page">
+        <div className="container page-head">
+          <p className="eyebrow">Something went wrong</p>
+          <h1>This page didn't load.</h1>
+          <p><button className="btn btn-ghost" onClick={() => window.location.reload()}>Reload</button></p>
+        </div>
+      </section>
+    )
+  }
+}
 
 const HelpCtx = createContext(() => {})
 export const useHelp = () => useContext(HelpCtx)
@@ -186,8 +219,8 @@ function Shell() {
     <HelpCtx.Provider value={() => setHelp(true)}>
       <div className="grain" aria-hidden="true" />
       {!immersive && <Nav onHelp={() => setHelp(true)} />}
-      <AnimatePresence mode="wait">
-        <motion.main key={location.pathname} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4, ease: EASE }}>
+      <PageBoundary key={location.pathname}>
+        <motion.main key={location.pathname} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, ease: EASE }}>
           <Suspense fallback={<div className="page" />}>
             <Routes location={location}>
               <Route path="/" element={<Landing />} />
@@ -201,7 +234,7 @@ function Shell() {
           </Suspense>
           {!immersive && location.pathname !== '/breathe' && <Footer />}
         </motion.main>
-      </AnimatePresence>
+      </PageBoundary>
       <HelpSheet open={help} onClose={() => setHelp(false)} />
     </HelpCtx.Provider>
   )
