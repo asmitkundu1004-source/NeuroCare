@@ -5,7 +5,7 @@ NeuroCare runs in two shapes, and you can host either for free.
 | Shape | What runs where | Best for | Free hosts |
 |---|---|---|---|
 | **Zero-server site** | Everything in the visitor's browser: Aura-Sense (WebAssembly), Aura-Face, safety gate, AGEM memory in an encrypted IndexedDB vault, optional Llama 3.2 on WebGPU | A public demo link, the viva, a portfolio | Vercel, Netlify, GitHub Pages, Cloudflare Pages |
-| **Full stack** | The FastAPI server with the fine-tuned Aura model (Ollama), serving the same site from one port | Showing the fine-tuned LLM and neural voice | Oracle Cloud Always Free, your laptop + Cloudflare Tunnel |
+| **Full stack** | The FastAPI server with the fine-tuned Aura model (Ollama), serving the same site from one port | Showing the fine-tuned LLM and neural voice | Kaggle (free GPU), Oracle Cloud Always Free, your laptop + Cloudflare Tunnel |
 
 The site looks for a server automatically and switches to the in-browser engine when there is none, so a static deployment never breaks.
 
@@ -106,7 +106,37 @@ All optional, set as environment variables before starting the server:
 
 ---
 
-## 4. Full stack on Oracle Cloud (free, always on)
+## 4. Full stack on Kaggle (free GPU, no card)
+
+Kaggle notebooks come with a free NVIDIA T4 GPU (about 30 hours a week, up to 12 hours per run) and need no payment card.
+`deploy/kaggle/neurocare_kaggle.ipynb` runs the whole stack there (the fine-tuned Aura model on the GPU, the server and the site)
+and prints a public `https://….trycloudflare.com` link. Replies take a second or two.
+
+**One-time setup**
+
+1. Sign in at https://www.kaggle.com and verify your phone number (**Settings → Phone verification**). Without it, notebooks have no internet.
+2. **Upload the model:** **Datasets → New Dataset**, drop in `aura-empathy-llama-3.2-3b.Q4_K_M.gguf` (1.9 GB), name it `aura-model`, keep it **Private**, **Create**.
+3. **Import the notebook:** **Code → New Notebook**, then **File → Import Notebook** and upload `deploy/kaggle/neurocare_kaggle.ipynb`.
+4. In the notebook's right-hand panel:
+   - **Add Input → Your Work → Datasets → aura-model**
+   - **Session options → Accelerator: GPU T4 x2**
+   - **Session options → Internet: On**
+
+**Each time you need the link**
+
+- **With your laptop off:** **Save Version → Save & Run All (Commit) → Save**. Open the running version from the notebook's
+  **Versions / Logs** view; after about 5 minutes the log shows `NeuroCare is live: https://….trycloudflare.com`.
+  It stays up for about 11.5 hours, then stops by itself.
+- **Quick test:** **Run All** and keep the tab open; the link is printed under the last cell.
+- **Link on your phone:** set `NTFY_TOPIC` in the second cell to a long random word, install the free *ntfy* app
+  (or open `https://ntfy.sh/<word>`), and the link is pushed there when it is ready.
+
+The link changes on every run, so start it shortly before a demo. Memories live only for that run.
+Stop a run early from **View Active Events → Stop session** to save GPU hours.
+
+---
+
+## 5. Full stack on Oracle Cloud (free, always on, needs a card)
 
 Hugging Face now charges for Docker Spaces, so the free home for the full stack is Oracle Cloud's
 **Always Free** tier: an Ampere server with 4 CPU cores and 24 GB of RAM that never sleeps.
@@ -161,7 +191,7 @@ Before a demo, clear it from the Privacy page.
 
 ---
 
-## 5. Pointing the static site at a remote server
+## 6. Pointing the static site at a remote server
 
 To make the Vercel or Netlify site use your server instead of the in-browser engine, set this on the static host and redeploy:
 

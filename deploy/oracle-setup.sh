@@ -15,7 +15,7 @@ export DEBIAN_FRONTEND=noninteractive
 if [ ! -f "$GGUF" ]; then
   echo "Model file missing. Copy it to:"
   echo "  $GGUF"
-  echo "(see docs/DEPLOYMENT.md, section 4), then run this script again."
+  echo "(see docs/DEPLOYMENT.md, section 5), then run this script again."
   exit 1
 fi
 
