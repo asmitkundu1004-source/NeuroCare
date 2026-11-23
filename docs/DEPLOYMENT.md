@@ -5,7 +5,7 @@ NeuroCare runs in two shapes, and you can host either for free.
 | Shape | What runs where | Best for | Free hosts |
 |---|---|---|---|
 | **Zero-server site** | Everything in the visitor's browser: Aura-Sense (WebAssembly), Aura-Face, safety gate, AGEM memory in an encrypted IndexedDB vault, optional Llama 3.2 on WebGPU | A public demo link, the viva, a portfolio | Vercel, Netlify, GitHub Pages, Cloudflare Pages |
-| **Full stack** | The FastAPI server with the fine-tuned Aura model (Ollama), serving the same site from one port | Showing the fine-tuned LLM and neural voice | Your laptop, Hugging Face Spaces (Docker), Render |
+| **Full stack** | The FastAPI server with the fine-tuned Aura model (Ollama), serving the same site from one port | Showing the fine-tuned LLM and neural voice | Oracle Cloud Always Free, your laptop + Cloudflare Tunnel |
 
 The site looks for a server automatically and switches to the in-browser engine when there is none, so a static deployment never breaks.
 
@@ -106,43 +106,70 @@ All optional, set as environment variables before starting the server:
 
 ---
 
-## 4. Full stack on Hugging Face Spaces (free, public)
+## 4. Full stack on Oracle Cloud (free, always on)
 
-A free CPU Space has 2 vCPU and 16 GB RAM: enough for the 3B model at a few tokens per second, which is fine for a demo.
+Hugging Face now charges for Docker Spaces, so the free home for the full stack is Oracle Cloud's
+**Always Free** tier: an Ampere server with 4 CPU cores and 24 GB of RAM that never sleeps.
+It runs the fine-tuned 3B model on the CPU at about 5 to 8 seconds per reply. Sign-up asks for a card
+to verify identity; Always Free resources are not charged.
 
-1. **Upload the model once.** Create a model repository on Hugging Face (for example `<you>/aura-empathy-3b`), upload the `.gguf` through the web page and copy its download link:
-   `https://huggingface.co/<you>/aura-empathy-3b/resolve/main/aura-empathy-llama-3.2-3b.Q4_K_M.gguf`
-2. **Create a Space** → SDK *Docker* → blank template.
-3. Upload the contents of this repository to the Space (the same drag-and-drop as GitHub). Then edit the Space's `README.md` so that it **begins** with:
-   ```yaml
-   ---
-   title: NeuroCare
-   colorFrom: indigo
-   colorTo: pink
-   sdk: docker
-   app_port: 7860
-   ---
-   ```
-4. Space **Settings → Variables and secrets → New variable**: `AURA_GGUF_URL` = the link from step 1.
-5. The Space builds the root `Dockerfile`, downloads the model on first start and serves the site and API at `https://<you>-<space>.hf.space`.
+**1. Create the server.**
+- Sign up at https://www.oracle.com/cloud/free/ and choose an Indian home region (Hyderabad or Mumbai).
+- **Compute → Instances → Create instance.** Image: *Canonical Ubuntu 22.04*. Shape: *Ampere VM.Standard.A1.Flex*, 4 OCPU, 24 GB.
+  Under *Add SSH keys* choose *Generate a key pair* and **download the private key** (save it as `oracle.key`).
+  If Oracle says "Out of capacity", try another availability domain or try again later.
+- Open the instance → its **subnet** → **Security List** → **Add Ingress Rules**: source `0.0.0.0/0`, TCP, destination port `80`. Add a second rule for `443`.
+- Copy the instance's **public IP**.
 
-Free Spaces sleep when idle and lose their disk on restart. For a demo that is fine; the vault starts empty again.
+**2. Get a free web address.** Microphone and camera need HTTPS, which needs a name.
+Log in at https://www.duckdns.org, create a sub-domain (for example `neurocare-aura`) and set its IP to the public IP.
 
-### Render (alternative)
+**3. Copy the code and the model to the server.** From PowerShell on your computer:
 
-New → Web Service → connect the repository → Runtime *Docker*. The free instance has 512 MB of RAM, too little for the 3B model, so leave `AURA_GGUF_URL` unset there; the server runs with the reflective responder.
+```powershell
+ssh -i oracle.key ubuntu@PUBLIC_IP "git clone https://github.com/asmitkundu1004-source/NeuroCare.git"
+scp -i oracle.key models\aura-llm\aura-empathy-llama-3.2-3b.Q4_K_M.gguf ubuntu@PUBLIC_IP:NeuroCare/models/aura-llm/
+```
+
+(Run the `scp` line from the project folder, or give the full path to the `.gguf`. It is 1.9 GB.)
+If `ssh` refuses the key as "too open", run `icacls oracle.key /inheritance:r /grant:r "$($env:USERNAME):R"` once.
+
+**4. Run the setup script** on the server. It installs Ollama, Node, Python packages and Caddy,
+registers the model, builds the site, starts everything as a service and gets the HTTPS certificate:
+
+```powershell
+ssh -i oracle.key ubuntu@PUBLIC_IP
+bash NeuroCare/deploy/oracle-setup.sh neurocare-aura.duckdns.org
+```
+
+It takes about 10 minutes and ends with `Open https://neurocare-aura.duckdns.org`. The session's status pill should read
+**"Local server · aura · fine-tuned Llama 3.2 3B"**. The server restarts by itself after a reboot.
+
+**Updating** after new commits: `cd NeuroCare && git pull && bash deploy/oracle-setup.sh neurocare-aura.duckdns.org`
+
+**Logs:** `journalctl -u neurocare -n 50` (server), `journalctl -u caddy -n 50` (HTTPS).
+
+The server keeps a single encrypted memory store, so everyone using one server link shares it.
+Before a demo, clear it from the Privacy page.
+
+### Other options
+
+- **Your laptop + Cloudflare Tunnel** (no account): start the server as in section 3 after `npm run build`, then
+  `cloudflared tunnel --url http://localhost:8000` prints a public `https://….trycloudflare.com` link. The laptop must stay awake and the link changes each time.
+- **Docker** (any paid host, or a Hugging Face PRO Space): the root `Dockerfile` serves everything on port 7860; set `AURA_GGUF_URL` to a download link for the `.gguf`.
+- **Render free tier**: 512 MB of RAM is too little for the 3B model; leave `AURA_GGUF_URL` unset and the server runs with the reflective responder.
 
 ---
 
 ## 5. Pointing the static site at a remote server
 
-To make a Vercel or Netlify site use a Space instead of the in-browser engine, set this on the static host and redeploy:
+To make the Vercel or Netlify site use your server instead of the in-browser engine, set this on the static host and redeploy:
 
 ```
-VITE_API_URL=https://<you>-<space>.hf.space
+VITE_API_URL=https://neurocare-aura.duckdns.org
 ```
 
-The Docker image already allows any origin (`NEUROCARE_CORS=*`). Narrow it to your site's URL if you prefer.
+The setup script and the Docker image already allow any origin (`NEUROCARE_CORS=*`). Narrow it to your site's URL if you prefer.
 
 ---
 

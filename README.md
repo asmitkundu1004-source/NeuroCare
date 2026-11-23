@@ -81,7 +81,7 @@ The site finds the server automatically; otherwise it runs everything in the tab
 | **Vercel** | Import the repo, set Root Directory to `web`. |
 | **Netlify** | Import the repo. `netlify.toml` does the rest. |
 | **GitHub Pages** | Settings → Pages → Source: GitHub Actions. |
-| **Hugging Face Spaces** | Docker Space from this repo, set `AURA_GGUF_URL` to your model file. |
+| **Oracle Cloud (full stack)** | Always Free server with the fine-tuned model: copy the model over, run `deploy/oracle-setup.sh`. |
 
 Step by step: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
